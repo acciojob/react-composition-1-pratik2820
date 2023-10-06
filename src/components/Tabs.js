@@ -2,29 +2,23 @@ import React,{useState} from "react";
 
 const Tabs = ({tabs}) =>{
 
-    let [tabClicked,SetTabClicked] = useState("");
+    const [currentTab, setCurrentTab] = useState('Tab 1');
 
-    function handleClick(content){
-        SetTabClicked(content);
-
-    }
-   
-    return(
-        <div>
+    return (
+        <div className="tabs">
             <ul>
-            {
-                tabs.map((value)=>
-                    <li onClick={()=>handleClick(value.content)}>{value.title}</li>
-                )
-            }
+                <li onClick={()=>setCurrentTab('Tab 1')}>Tab 1</li>
+                <li onClick={()=>setCurrentTab('Tab 2')}>Tab 2</li>
+                <li onClick={()=>setCurrentTab('Tab 3')}>Tab 3</li>
             </ul>
-            {
-                // tabClicked !==""?<p>This is the content for {tabClicked}</p>:""
-
-                tabClicked && <p>This is the content for {tabClicked}</p>
-            }
+            {currentTab && 
+                <p>This is the content for {currentTab}.</p>
+            } 
         </div>
     )
+    
+        
+    
 }
 
 export default Tabs;
